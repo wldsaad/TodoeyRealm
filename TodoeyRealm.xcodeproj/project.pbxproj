@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		048BA286A6F15F5DB573BDB8 /* Pods_TodoeyRealm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D06797A5BDA4B99084B26B42 /* Pods_TodoeyRealm.framework */; };
+		9A72F0A621D7C5680030F976 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A72F0A521D7C5680030F976 /* Category.swift */; };
 		9AFFAB3B21D7B6770032A017 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AFFAB3A21D7B6770032A017 /* AppDelegate.swift */; };
 		9AFFAB3D21D7B6770032A017 /* CategoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AFFAB3C21D7B6770032A017 /* CategoryVC.swift */; };
 		9AFFAB4021D7B6770032A017 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9AFFAB3E21D7B6770032A017 /* Main.storyboard */; };
@@ -20,6 +21,7 @@
 
 /* Begin PBXFileReference section */
 		5D705D36F0C729F9B01221F8 /* Pods-TodoeyRealm.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TodoeyRealm.release.xcconfig"; path = "Pods/Target Support Files/Pods-TodoeyRealm/Pods-TodoeyRealm.release.xcconfig"; sourceTree = "<group>"; };
+		9A72F0A521D7C5680030F976 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		9AFFAB3721D7B6770032A017 /* TodoeyRealm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TodoeyRealm.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9AFFAB3A21D7B6770032A017 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9AFFAB3C21D7B6770032A017 /* CategoryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryVC.swift; sourceTree = "<group>"; };
@@ -101,6 +103,7 @@
 		9AFFAB4C21D7B9600032A017 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				9A72F0A521D7C5680030F976 /* Category.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -261,6 +264,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9AFFAB5621D7BB2B0032A017 /* CategoryXibView.swift in Sources */,
+				9A72F0A621D7C5680030F976 /* Category.swift in Sources */,
 				9AFFAB3D21D7B6770032A017 /* CategoryVC.swift in Sources */,
 				9AFFAB3B21D7B6770032A017 /* AppDelegate.swift in Sources */,
 				9AFFAB5221D7BA540032A017 /* CategoryCell.swift in Sources */,

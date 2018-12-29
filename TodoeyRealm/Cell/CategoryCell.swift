@@ -25,6 +25,8 @@ class CategoryCell: UITableViewCell {
         }
     }
 
-    
+    func updateCategoryName(withCategory category: Category){
+        categoryView.categoryLabel.text = category.name
+    }
 
 }

@@ -61,7 +61,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" id="rXm-6i-tei"/>
+                    <navigationItem key="navigationItem" id="rXm-6i-tei">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="vdP-Ey-fx5">
+                            <connections>
+                                <action selector="addCategoryAction:" destination="BYZ-38-t0r" id="dr5-76-zGF"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="rnB-Rg-CTt" id="70h-vu-r2Q"/>
                     </connections>
