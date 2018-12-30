@@ -79,3 +79,19 @@ extension CategoryVC: UITableViewDataSource {
     
     
 }
+
+extension CategoryVC: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let selectedCategory = categories?[indexPath.row] {
+            performSegue(withIdentifier: "itemsSegue", sender: selectedCategory)
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let itemsVC = segue.destination as? ItemVC {
+            if let indexPath = self.tableView.indexPathForSelectedRow {
+                itemsVC.currentCategory = categories?[indexPath.row]
+            }
+        }
+    }
+}
