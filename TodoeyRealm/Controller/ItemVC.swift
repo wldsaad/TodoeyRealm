@@ -82,10 +82,41 @@ extension ItemVC: UITableViewDataSource {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "itemCell", for: indexPath) as? ItemCell {
             if let item = items?[indexPath.row] {
                 cell.updateItemName(withItem: item)
+                cell.accessoryType = item.checked ? .checkmark : .none
             }
             return cell
         }
         
         return ItemCell()
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            if let item = items?[indexPath.row] {
+                do {
+                    try realm.write {
+                        realm.delete(item)
+                        tableView.reloadData()
+                    }
+                } catch {
+                    debugPrint("Error deleting item: \(error)")
+                }
+            }
+        }
+    }
+}
+
+extension ItemVC: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let item = items?[indexPath.row]{
+            do {
+                try realm.write {
+                    item.checked = !item.checked
+                    tableView.reloadData()
+                }
+            } catch {
+                
+            }
+        }
     }
 }

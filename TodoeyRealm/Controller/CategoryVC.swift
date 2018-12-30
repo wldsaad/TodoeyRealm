@@ -77,12 +77,27 @@ extension CategoryVC: UITableViewDataSource {
          return CategoryCell()
     }
     
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            if let category = categories?[indexPath.row] {
+                do {
+                    try realm.write {
+                        realm.delete(category)
+                        tableView.reloadData()
+                    }
+                } catch {
+                    debugPrint("Error removing category: \(error)")
+                }
+            }
+        }
+    }
     
 }
 
 extension CategoryVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let selectedCategory = categories?[indexPath.row] {
+            tableView.deselectRow(at: indexPath, animated: true)
             performSegue(withIdentifier: "itemsSegue", sender: selectedCategory)
         }
     }

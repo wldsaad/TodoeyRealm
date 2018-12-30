@@ -16,8 +16,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        _ = try! Realm()
         
-        debugPrint(Realm.Configuration.defaultConfiguration.fileURL)
+//        debugPrint(Realm.Configuration.defaultConfiguration.fileURL)
         return true
     }
 
