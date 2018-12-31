@@ -51,13 +51,42 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="FX9-L7-vSd"/>
                                 </connections>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s2k-Ay-kA1">
+                                <rect key="frame" x="20" y="211.5" width="335" height="128"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No categories yet, add some" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kVF-DK-T02">
+                                        <rect key="frame" x="58" y="53.5" width="219.5" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrow" translatesAutoresizingMaskIntoConstraints="NO" id="aO2-Fq-MRH">
+                                        <rect key="frame" x="277.5" y="28" width="60" height="60"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="60" id="hkb-Ju-m9N"/>
+                                            <constraint firstAttribute="width" constant="60" id="uvv-8S-WIg"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="kVF-DK-T02" firstAttribute="centerY" secondItem="s2k-Ay-kA1" secondAttribute="centerY" id="Cz6-CZ-DGD"/>
+                                    <constraint firstAttribute="height" constant="128" id="P0b-fp-ANU"/>
+                                    <constraint firstItem="aO2-Fq-MRH" firstAttribute="leading" secondItem="kVF-DK-T02" secondAttribute="trailing" id="VXo-ac-3Vb"/>
+                                    <constraint firstItem="kVF-DK-T02" firstAttribute="centerX" secondItem="s2k-Ay-kA1" secondAttribute="centerX" id="ZdF-aL-EcY"/>
+                                    <constraint firstItem="aO2-Fq-MRH" firstAttribute="centerY" secondItem="s2k-Ay-kA1" secondAttribute="centerY" constant="-6" id="ld5-Sr-jtn"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="s2k-Ay-kA1" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="2iH-ZA-NDW"/>
+                            <constraint firstItem="s2k-Ay-kA1" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="36u-m3-xFQ"/>
                             <constraint firstItem="rnB-Rg-CTt" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="8b8-1f-Ooc"/>
                             <constraint firstItem="rnB-Rg-CTt" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="Cnt-ng-Zt2"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="s2k-Ay-kA1" secondAttribute="trailing" constant="20" id="Tqu-m4-USK"/>
                             <constraint firstItem="rnB-Rg-CTt" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="YAa-UT-zrX"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="rnB-Rg-CTt" secondAttribute="bottom" id="emL-GL-2DT"/>
+                            <constraint firstItem="s2k-Ay-kA1" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="yNf-Sx-fSO"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -69,6 +98,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="noCategoriesView" destination="s2k-Ay-kA1" id="lZO-0Z-UOi"/>
                         <outlet property="tableView" destination="rnB-Rg-CTt" id="70h-vu-r2Q"/>
                         <segue destination="169-j1-ZLA" kind="show" identifier="itemsSegue" id="wC4-Fx-3HW"/>
                     </connections>
@@ -126,12 +156,42 @@
                                     <outlet property="delegate" destination="169-j1-ZLA" id="fNi-FI-jHP"/>
                                 </connections>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7Yf-df-Y9N">
+                                <rect key="frame" x="20" y="211.5" width="335" height="128"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No items yet, add some" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7ZV-3p-Z6f">
+                                        <rect key="frame" x="77.5" y="53.5" width="180.5" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrow" translatesAutoresizingMaskIntoConstraints="NO" id="3jF-u7-dXu">
+                                        <rect key="frame" x="258" y="28" width="60" height="60"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="60" id="S00-bp-tuj"/>
+                                            <constraint firstAttribute="height" constant="60" id="unG-K6-cmM"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="128" id="0QQ-8i-y0m"/>
+                                    <constraint firstItem="3jF-u7-dXu" firstAttribute="leading" secondItem="7ZV-3p-Z6f" secondAttribute="trailing" id="4Zr-SI-Ulv"/>
+                                    <constraint firstAttribute="height" constant="128" id="kyn-qe-ENS"/>
+                                    <constraint firstItem="7ZV-3p-Z6f" firstAttribute="centerY" secondItem="7Yf-df-Y9N" secondAttribute="centerY" id="t8T-BJ-LAK"/>
+                                    <constraint firstItem="7ZV-3p-Z6f" firstAttribute="centerX" secondItem="7Yf-df-Y9N" secondAttribute="centerX" id="tfw-n9-1Iw"/>
+                                    <constraint firstItem="3jF-u7-dXu" firstAttribute="centerY" secondItem="7Yf-df-Y9N" secondAttribute="centerY" constant="-6" id="txE-r9-ie8"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="bXH-ZJ-bIU" firstAttribute="bottom" secondItem="7Bx-kw-A5v" secondAttribute="bottom" id="5La-py-MyH"/>
                             <constraint firstItem="bXH-ZJ-bIU" firstAttribute="trailing" secondItem="7Bx-kw-A5v" secondAttribute="trailing" id="5c2-fc-y40"/>
                             <constraint firstItem="bXH-ZJ-bIU" firstAttribute="leading" secondItem="7Bx-kw-A5v" secondAttribute="leading" id="VoD-A7-31e"/>
+                            <constraint firstItem="7Yf-df-Y9N" firstAttribute="leading" secondItem="7Bx-kw-A5v" secondAttribute="leading" constant="20" id="doS-m8-Aoc"/>
+                            <constraint firstItem="7Yf-df-Y9N" firstAttribute="centerX" secondItem="qvs-2w-RGU" secondAttribute="centerX" id="fB5-Al-I3G"/>
+                            <constraint firstItem="7Yf-df-Y9N" firstAttribute="centerY" secondItem="qvs-2w-RGU" secondAttribute="centerY" id="hq7-bJ-11t"/>
+                            <constraint firstItem="7Bx-kw-A5v" firstAttribute="trailing" secondItem="7Yf-df-Y9N" secondAttribute="trailing" constant="20" id="o4x-Hm-caB"/>
                             <constraint firstItem="bXH-ZJ-bIU" firstAttribute="top" secondItem="7Bx-kw-A5v" secondAttribute="top" id="y8c-OW-qAS"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="7Bx-kw-A5v"/>
@@ -144,6 +204,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="noItemsView" destination="7Yf-df-Y9N" id="HPQ-86-hYE"/>
                         <outlet property="searchBar" destination="rLd-tT-Yd9" id="AQh-D7-h1e"/>
                         <outlet property="tableView" destination="bXH-ZJ-bIU" id="zRC-pf-wkM"/>
                     </connections>
@@ -171,4 +232,7 @@
             <point key="canvasLocation" x="157.59999999999999" y="792.95352323838085"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="arrow" width="512" height="512"/>
+    </resources>
 </document>

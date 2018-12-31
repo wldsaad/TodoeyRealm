@@ -13,13 +13,21 @@ import ChameleonFramework
 class CategoryVC: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var noCategoriesView: UIView!
     private let realm = try! Realm()
     private var categories: Results<Category>?
     override func viewDidLoad() {
         super.viewDidLoad()
         loadObjects()
+        showHideViews()
     }
 
+    private func showHideViews(){
+        if let categoriesCount = categories?.count {
+            noCategoriesView.isHidden = categoriesCount > 0 ? true : false
+            tableView.isHidden = categoriesCount > 0 ? false : true
+        }
+    }
     @IBAction func addCategoryAction(_ sender: UIBarButtonItem) {
         var categoryTextField = UITextField()
         let addAlert = UIAlertController(title: "Add category", message: "", preferredStyle: .alert)
@@ -34,6 +42,7 @@ class CategoryVC: UIViewController {
                     newCategory.name = categoryName
                     newCategory.color = UIColor.randomFlat.hexValue()
                     self.saveObject(object: newCategory)
+                    self.showHideViews()
                 }
             }
             
@@ -85,6 +94,7 @@ extension CategoryVC: UITableViewDataSource {
                 do {
                     try realm.write {
                         realm.delete(category)
+                        showHideViews()
                         tableView.reloadData()
                     }
                 } catch {

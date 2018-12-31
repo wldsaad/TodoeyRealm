@@ -14,6 +14,7 @@ class ItemVC: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
+    @IBOutlet weak var noItemsView: UIView!
     private let realm = try! Realm()
     var currentCategory: Category? {
         didSet {
@@ -25,10 +26,17 @@ class ItemVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        showHideViews()
         searchBar.barTintColor = UIColor.init(hexString: currentCategory?.color ?? UIColor.flatGray.hexValue())
 
     }
     
+    private func showHideViews(){
+        if let itemsCount = items?.count {
+            noItemsView.isHidden = itemsCount > 0 ? true : false
+            tableView.isHidden = itemsCount > 0 ? false : true
+        }
+    }
     
     @IBAction func addItemAction(_ sender: UIBarButtonItem) {
         var itemTextField = UITextField()
@@ -48,6 +56,7 @@ class ItemVC: UIViewController {
                         do {
                             try self.realm.write {
                                 currentCategory.items.append(newItem)
+                                self.showHideViews()
                                 self.tableView.reloadData()
                             }
                         } catch {
@@ -134,6 +143,7 @@ extension ItemVC: UITableViewDataSource {
                 do {
                     try realm.write {
                         realm.delete(item)
+                        self.showHideViews()
                         tableView.reloadData()
                     }
                 } catch {
