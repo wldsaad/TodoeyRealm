@@ -104,9 +104,7 @@ extension CategoryVC: UITableViewDelegate {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let itemsVC = segue.destination as? ItemVC {
-            if let indexPath = self.tableView.indexPathForSelectedRow {
-                itemsVC.currentCategory = categories?[indexPath.row]
-            }
+            itemsVC.currentCategory = (sender as! Category)
         }
     }
 }

@@ -19,7 +19,7 @@ class ItemVC: UIViewController {
             loadItems()
         }
     }
-    private var items: List<Item>?
+    private var items: Results<Item>?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,12 +38,13 @@ class ItemVC: UIViewController {
         let addAction = UIAlertAction(title: "Add", style: .default) { (action) in
             if let itemName = itemTextField.text {
                 if itemName.count > 0 {
+
                     if let currentCategory = self.currentCategory {
+                        let newItem = Item()
+                        newItem.title = itemName
+                        newItem.date = Date()
                         do {
                             try self.realm.write {
-                                let newItem = Item()
-                                newItem.title = itemName
-                                newItem.date = Date()
                                 currentCategory.items.append(newItem)
                                 self.tableView.reloadData()
                             }
@@ -67,7 +68,7 @@ class ItemVC: UIViewController {
     
     
     private func loadItems(){
-        items = currentCategory?.items
+        items = currentCategory?.items.sorted(byKeyPath: "date", ascending: false)
     }
 
 
@@ -119,4 +120,21 @@ extension ItemVC: UITableViewDelegate {
             }
         }
     }
+}
+
+extension ItemVC: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchBar.text?.count == 0 {
+            loadItems()
+            tableView.reloadData()
+        } else {
+            items = currentCategory?.items.filter("title CONTAINS[cd] %@", searchText).sorted(byKeyPath: "date", ascending: false)
+            self.tableView.reloadData()
+        }
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+    }
+    
 }
