@@ -86,20 +86,8 @@ class ItemVC: UIViewController {
         super.viewWillAppear(animated)
         updateNavColors()
 
-        
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        restoreColors()
-    }
-    
-    private func restoreColors(){
-        navigationController?.navigationBar.barTintColor = UIColor.flatWhite
-        navigationController?.navigationBar.tintColor = UIColor.flatBlack
-        navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.flatBlack]
-
-    }
     
     private func updateNavColors(){
         guard let categoryColor = UIColor.init(hexString: currentCategory?.color ?? UIColor.flatWhite.hexValue()) else {

@@ -28,6 +28,13 @@ class CategoryVC: UIViewController {
             tableView.isHidden = categoriesCount > 0 ? false : true
         }
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.barTintColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+        navigationController?.navigationBar.tintColor = UIColor.flatBlack
+        navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.flatBlack]
+    }
     @IBAction func addCategoryAction(_ sender: UIBarButtonItem) {
         var categoryTextField = UITextField()
         let addAlert = UIAlertController(title: "Add category", message: "", preferredStyle: .alert)
