@@ -27,7 +27,12 @@ class ItemCell: UITableViewCell {
         }
     }
 
-    func updateItemName(withItem item: Item) {
+    func updateItem(withItem item: Item, currentCellNumber: Int, totalItemsNumber: Int, color: String) {
         itemXibView.itemLabel.text = item.title
+        if let xibBackgroundColor = UIColor.init(hexString: color){
+            let percentage = CGFloat(currentCellNumber) / CGFloat(totalItemsNumber)
+            itemXibView.backgroundColor = xibBackgroundColor.darken(byPercentage: percentage)
+            itemXibView.itemLabel.textColor = UIColor.init(contrastingBlackOrWhiteColorOn: itemXibView.backgroundColor!, isFlat: true)
+        }
     }
 }

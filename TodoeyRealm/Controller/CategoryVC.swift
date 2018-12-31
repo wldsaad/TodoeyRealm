@@ -8,6 +8,7 @@
 
 import UIKit
 import RealmSwift
+import ChameleonFramework
 
 class CategoryVC: UIViewController {
     
@@ -31,6 +32,7 @@ class CategoryVC: UIViewController {
                 if categoryName.count > 0 {
                     let newCategory = Category()
                     newCategory.name = categoryName
+                    newCategory.color = UIColor.randomFlat.hexValue()
                     self.saveObject(object: newCategory)
                 }
             }

@@ -8,6 +8,7 @@
 
 import UIKit
 import RealmSwift
+import ChameleonFramework
 
 class ItemVC: UIViewController {
 
@@ -24,7 +25,8 @@ class ItemVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        searchBar.barTintColor = UIColor.init(hexString: currentCategory?.color ?? UIColor.flatGray.hexValue())
+
     }
     
     
@@ -70,7 +72,36 @@ class ItemVC: UIViewController {
     private func loadItems(){
         items = currentCategory?.items.sorted(byKeyPath: "date", ascending: false)
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        updateNavColors()
 
+        
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        restoreColors()
+    }
+    
+    private func restoreColors(){
+        navigationController?.navigationBar.barTintColor = UIColor.flatWhite
+        navigationController?.navigationBar.tintColor = UIColor.flatBlack
+        navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.flatBlack]
+
+    }
+    
+    private func updateNavColors(){
+        guard let categoryColor = UIColor.init(hexString: currentCategory?.color ?? UIColor.flatWhite.hexValue()) else {
+            return
+        }
+        navigationController?.navigationBar.barTintColor = categoryColor
+        navigationController?.navigationBar.tintColor = UIColor.init(contrastingBlackOrWhiteColorOn: categoryColor, isFlat: true)
+        navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.init(contrastingBlackOrWhiteColorOn: categoryColor, isFlat: true)]
+        title = currentCategory?.name
+        
+    }
 
 }
 
@@ -82,9 +113,15 @@ extension ItemVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "itemCell", for: indexPath) as? ItemCell {
             if let item = items?[indexPath.row] {
-                cell.updateItemName(withItem: item)
+                cell.updateItem(withItem: item, currentCellNumber: indexPath.row, totalItemsNumber: (items?.count)!, color: currentCategory?.color ?? UIColor.flatWhite.hexValue())
                 cell.accessoryType = item.checked ? .checkmark : .none
+
             }
+            if let categoryBackgroundColor = currentCategory?.color {
+                let percentage = CGFloat(indexPath.row) / CGFloat(items?.count ?? 0)
+                cell.backgroundColor = UIColor.init(hexString: categoryBackgroundColor)?.darken(byPercentage: percentage)
+            }
+
             return cell
         }
         

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ChameleonFramework
 
 class CategoryCell: UITableViewCell {
     
@@ -27,6 +28,13 @@ class CategoryCell: UITableViewCell {
 
     func updateCategoryName(withCategory category: Category){
         categoryView.categoryLabel.text = category.name
+        
+        if let viewBackgroundColor = UIColor.init(hexString: category.color) {
+            categoryView.backgroundColor = viewBackgroundColor
+            categoryView.categoryLabel.textColor = UIColor(contrastingBlackOrWhiteColorOn: viewBackgroundColor, isFlat: true)
+        }
+        
+
     }
 
 }
